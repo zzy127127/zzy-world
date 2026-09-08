@@ -1,0 +1,19 @@
+# Local preview and build caches
+.vite/
+node_modules/
+dist/
+tmp/
+.impeccable/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local environment and editor files
+.env
+.env.*
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
