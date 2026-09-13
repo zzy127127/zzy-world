@@ -2752,3 +2752,329 @@ body{background:#dfe8ea}
   box-shadow:none;
   transform:rotate(-1.4deg);
 }
+
+/* Mobile-only audit pass: keep the core cards compact and make artwork read as
+   intentional full-bleed compositions rather than desktop crops. */
+@media(max-width:900px){
+  .core-showcase{gap:22px}
+  .core-feature{max-width:100%}
+  .sourcing-feature .sourcing-art{
+    min-height:clamp(280px,68vw,460px);
+    background:
+      repeating-linear-gradient(90deg,transparent 0 54px,rgba(102,215,255,.05) 55px,transparent 56px),
+      repeating-linear-gradient(0deg,transparent 0 54px,rgba(102,215,255,.04) 55px,transparent 56px),
+      radial-gradient(circle at 50% 46%,#142b3b 0,#07111a 48%,#03080e 78%);
+  }
+  .sourcing-feature .sourcing-art img{
+    width:min(76vw,440px);
+    height:auto;
+    max-width:88%;
+    max-height:88%;
+    object-fit:contain;
+    transform:none!important;
+    mix-blend-mode:screen;
+  }
+  .tunnel-art .tunnel-art-image{object-position:center}
+  .tunnel-art>small{
+    top:18px;
+    left:20px;
+    max-width:calc(100% - 40px);
+    font-size:9px;
+  }
+  .tunnel-line{
+    left:7%;
+    right:7%;
+    bottom:11%;
+    gap:9px;
+    font-size:8px;
+  }
+}
+@media(max-width:600px){
+  .core-showcase{gap:18px}
+  .core-copy{
+    min-height:0;
+    padding:32px 24px 30px;
+  }
+  .core-copy h3{
+    margin:18px 0 20px;
+    font-size:clamp(44px,11.5vw,62px);
+  }
+  .core-copy p{
+    margin:0;
+    font-size:13px;
+    line-height:1.7;
+  }
+  .core-art{min-height:72vw}
+  .sourcing-feature .sourcing-art{min-height:82vw}
+  .sourcing-feature .sourcing-art img{
+    width:82vw;
+    max-width:92%;
+    max-height:92%;
+  }
+  .tunnel-art>small{
+    top:15px;
+    left:16px;
+    font-size:8px;
+    letter-spacing:.1em;
+  }
+  .tunnel-line{bottom:10%;font-size:7.5px}
+}
+
+/* 2026-09-13 — Mobile art direction.
+   These rules deliberately live in one phone-only layer so the desktop
+   compositions remain completely independent. */
+@media(max-width:600px){
+  /* Home core cases: poster copy followed by a full-width visual field. */
+  .core-showcase{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:28px!important;
+    padding-inline:0;
+  }
+  .core-showcase .core-feature,
+  .core-showcase .sourcing-feature,
+  .core-showcase .tunnel-feature{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    transform:none!important;
+    box-shadow:8px 10px 0 rgba(17,19,15,.14)!important;
+  }
+  .core-showcase .core-copy,
+  .core-showcase .tunnel-feature .core-copy{
+    order:1!important;
+    min-height:0!important;
+    padding:31px 25px 27px!important;
+    border:0!important;
+  }
+  .core-showcase .core-copy h3,
+  .core-showcase .sourcing-feature .core-copy h3{
+    margin:17px 0 18px;
+    font-size:clamp(47px,13.2vw,64px);
+    line-height:.88;
+  }
+  .core-showcase .core-copy p{font-size:13px;line-height:1.6}
+  .core-showcase .core-copy b{margin-top:24px}
+  .core-showcase .core-art,
+  .core-showcase .sourcing-art,
+  .core-showcase .tunnel-art{
+    order:2!important;
+    width:100%!important;
+    min-height:0!important;
+    border:0!important;
+  }
+  .core-showcase .sourcing-art{height:88vw!important;max-height:440px}
+  .core-showcase .sourcing-art img{
+    width:min(84vw,420px)!important;
+    max-width:92%!important;
+    max-height:92%!important;
+  }
+  .core-showcase .sourcing-art span{
+    right:17px;
+    bottom:14px;
+    writing-mode:horizontal-tb;
+    white-space:nowrap;
+  }
+  .core-showcase .tunnel-art{height:61vw!important;max-height:305px}
+  .core-showcase .tunnel-art .tunnel-art-image{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center!important;
+  }
+
+  /* Tunnel knowledge route: a compact 2 × 2 field, not a long stack. */
+  .editorial-case .tunnel-problem .knowledge-map{
+    counter-reset:mobile-route;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+    align-items:stretch;
+    justify-items:stretch!important;
+    padding:0!important;
+  }
+  .editorial-case .tunnel-problem .knowledge-map>i{display:none!important}
+  .editorial-case .tunnel-problem .knowledge-map>div,
+  .editorial-case .tunnel-problem .knowledge-map>div.active{
+    counter-increment:mobile-route;
+    position:relative;
+    width:auto!important;
+    min-width:0!important;
+    min-height:132px!important;
+    margin:0!important;
+    padding:20px 17px 17px!important;
+    justify-self:stretch!important;
+    display:flex!important;
+    flex-direction:column;
+    justify-content:flex-end!important;
+    align-items:flex-start!important;
+    border:0!important;
+    clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)!important;
+    transform:none!important;
+    text-align:left!important;
+  }
+  .editorial-case .tunnel-problem .knowledge-map>div:before{
+    content:"0" counter(mobile-route);
+    position:absolute;
+    top:12px;
+    right:14px;
+    font:9px "IBM Plex Mono",monospace;
+    letter-spacing:.12em;
+    opacity:.55;
+  }
+  .editorial-case .tunnel-problem .knowledge-map>div:nth-of-type(1){background:#111713!important;color:#f5f2e9!important}
+  .editorial-case .tunnel-problem .knowledge-map>div:nth-of-type(2){background:#b9d9ff!important;color:#111713!important}
+  .editorial-case .tunnel-problem .knowledge-map>div:nth-of-type(3){background:#ff9b72!important;color:#111713!important}
+  .editorial-case .tunnel-problem .knowledge-map>div:nth-of-type(4){background:#dfff47!important;color:#111713!important}
+  .editorial-case .tunnel-problem .knowledge-map>div b{
+    font-size:clamp(34px,10vw,48px)!important;
+    line-height:.9;
+    letter-spacing:-.06em;
+    white-space:nowrap;
+  }
+  .editorial-case .tunnel-problem .knowledge-map>div span{
+    margin-top:14px;
+    padding-top:8px;
+    border-top:1px solid currentColor;
+    color:inherit!important;
+    font-size:10px!important;
+    opacity:.7;
+  }
+
+  /* Side-project heroes become genuine vertical mobile posters. */
+  .mini-story .mini-hero,
+  .mini-story .cat-hero,
+  .mini-story .resume-hero{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    min-height:0!important;
+    overflow:hidden;
+  }
+  .mini-story .mini-copy{
+    width:100%!important;
+    min-height:0!important;
+    padding:46px 25px 32px!important;
+  }
+  .mini-story .mini-copy h1,
+  .mini-story .mini-copy h1.cat-single-title{
+    max-width:none;
+    margin:17px 0 24px;
+    font-size:clamp(48px,13vw,64px)!important;
+    line-height:.9;
+    word-break:keep-all;
+    text-wrap:balance;
+  }
+  .cat-story .mini-copy h1.cat-single-title{
+    font-size:clamp(42px,11.5vw,52px)!important;
+    white-space:normal!important;
+    text-wrap:nowrap;
+  }
+  .mini-story .mini-copy>p{font-size:15px;line-height:1.75}
+  .mini-story .mini-copy .case-metrics{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    margin-top:34px!important;
+  }
+  .mini-story .mini-copy .case-metrics strong{white-space:nowrap}
+
+  /* Sticker wall: ten characters read as the hero, in one dense collection. */
+  .sticker-story .sticker-stage{
+    order:2;
+    min-height:0!important;
+    height:auto!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:8px!important;
+    padding:24px 15px 30px!important;
+    align-content:center;
+  }
+  .sticker-story .sticker-wall>figure,
+  .sticker-story .sticker-wall>figure:nth-child(n+10){
+    display:block!important;
+    width:100%;
+    min-width:0;
+    border-radius:10px;
+    transform:translateY(calc((var(--i) % 2) * 8px))!important;
+    box-shadow:0 9px 20px rgba(0,0,0,.14);
+  }
+  .sticker-story .sticker-stage i{
+    grid-column:1/-1;
+    position:static;
+    margin-top:12px;
+    text-align:right;
+  }
+
+  /* Cat hero and result screens: full-width product evidence. */
+  .cat-story .phone-stage.site-shot{
+    order:2;
+    width:100%;
+    min-height:0!important;
+    padding:28px 22px 34px!important;
+  }
+  .cat-story .cat-home-frame{width:min(88%,420px)!important}
+  .cat-story .phone-pair{
+    display:flex!important;
+    flex-direction:column;
+    width:100%!important;
+    max-width:none!important;
+    gap:22px!important;
+  }
+  .cat-story .phone-pair>i{
+    width:46px;
+    height:46px;
+    display:grid;
+    place-items:center;
+    align-self:center;
+    border:1px solid currentColor;
+    border-radius:50%;
+    transform:rotate(90deg)!important;
+  }
+  .cat-story .phone-pair figure{width:100%!important}
+  .cat-story .phone-pair .test-crop img{
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+  .cat-story .result-mosaic{
+    display:flex!important;
+    flex-direction:column;
+    min-height:0!important;
+    gap:16px!important;
+    overflow:visible!important;
+  }
+  .cat-story .result-mosaic>div{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    transform:none!important;
+    border-radius:22px!important;
+    box-shadow:0 18px 36px rgba(52,40,22,.15);
+  }
+  .cat-story .result-mosaic img{width:100%!important;height:auto!important}
+  .cat-story .result-mosaic figcaption{position:static!important;margin-top:3px!important}
+
+  /* Resume hero: interface takes the full second act instead of a side sliver. */
+  .resume-story .resume-stage{
+    order:2;
+    width:100%;
+    min-height:0!important;
+    height:auto!important;
+    padding:22px!important;
+    aspect-ratio:auto;
+  }
+  .resume-story .resume-stage img{
+    display:block;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    transform:none!important;
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 18px 42px rgba(0,0,0,.32);
+  }
+}
